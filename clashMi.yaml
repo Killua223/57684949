@@ -1,0 +1,494 @@
+{
+  "proxy-providers": {
+    "providers": {
+      "url": "订阅链接"
+      "type": "http"
+      "interval": 86400
+      "health-check": {
+        "enable": true
+        "url": "https://clients3.google.com/generate_204"
+        "interval": 300
+      }
+    }
+  },
+  "port": 7892,
+  "socks-port": 7893,
+  "mixed-port": 7890,
+  "allow-lan": true,
+  "bind-address": "*",
+  "find-process-mode": "off",
+  "mode": "rule",
+  "geodata-mode": false,
+  "geodata-loader": "memconservative",
+  "geox-url": {
+    "geoip": "https://cdn.jsdmirror.com/gh/MetaCubeX/meta-rules-dat@release/geoip.dat",
+    "geosite": "https://cdn.jsdmirror.com/gh/MetaCubeX/meta-rules-dat@release/geosite.dat",
+    "mmdb": "https://cdn.jsdmirror.com/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb",
+    "asn": "https://cdn.jsdmirror.com/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+  },
+  "geo-auto-update": false,
+  "geo-update-interval": 24,
+  "geosite-matcher": "succinct",
+  "global-ua": "clash.meta",
+  "etag-support": true,
+  "log-level": "info",
+  "ipv6": true,
+  "external-controller": "0.0.0.0:9090",
+  "secret": "",
+  "external-controller-cors": {
+    "allow-origins": [
+      "*"
+    ],
+    "allow-private-network": true
+  },
+  "unified-delay": true,
+  "tcp-concurrent": true,
+  "external-ui": "ui",
+  "external-ui-name": "xd",
+  "external-ui-url": "https://ghfast.top/github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+  "external-doh-server": "/dns-query",
+  "global-client-fingerprint": "chrome",
+  "disable-keep-alive": true,
+  "keep-alive-idle": 15,
+  "keep-alive-interval": 15,
+  "experimental": {
+    "quic-go-disable-gso": true,
+    "quic-go-disable-ecn": true,
+    "dialer-ip4p-convert": false
+  },
+  "hosts": {
+    "ntp.ntsc.ac.cn": [
+      "114.118.7.161",
+      "114.118.7.163"
+    ]
+  },
+  "profile": {
+    "store-selected": true,
+    "store-fake-ip": true
+  },
+  "ntp": {
+    "enable": false,
+    "write-to-system": false,
+    "server": "ntp.ntsc.ac.cn",
+    "port": 123,
+    "interval": 30
+  },
+  "sniffer": {
+    "enable": true,
+    "force-dns-mapping": true,
+    "parse-pure-ip": true,
+    "override-destination": false,
+    "sniff": {
+      "HTTP": {
+        "ports": [
+          80,
+          "8080-8880"
+        ],
+        "override-destination": true
+      },
+      "TLS": {
+        "ports": [
+          443,
+          8443
+        ]
+      },
+      "QUIC": {
+        "ports": [
+          443,
+          8443
+        ]
+      }
+    },
+    "force-domain": [
+      "+.v2ex.com"
+    ],
+    "skip-domain": [
+      "Mijia.Cloud.com"
+    ],
+    "skip-src-address": [
+      "192.168.0.3/32"
+    ],
+    "skip-dst-address": [
+      "192.168.0.3/32"
+    ]
+  },
+  "tun": {
+    "enable": true,
+    "stack": "gvisor",
+    "auto-route": true,
+    "auto-detect-interface": true,
+    "dns-hijack": [
+      "any:53",
+      "tcp://any:53"
+    ],
+    "device": "utun0",
+    "mtu": 1500,
+    "strict-route": true,
+    "gso": true,
+    "gso-max-size": 65536,
+    "udp-timeout": 300,
+    "endpoint-independent-nat": false
+  },
+  "dns": {
+    "enable": true,
+    "cache-algorithm": "arc",
+    "prefer-h3": false,
+    "use-hosts": true,
+    "use-system-hosts": true,
+    "respect-rules": true,
+    "listen": "0.0.0.0:1053",
+    "ipv6": true,
+    "default-nameserver": [
+      "quic://223.5.5.5",
+      "quic://223.6.6.6"
+    ],
+    "enhanced-mode": "fake-ip",
+    "fake-ip-range": "198.18.0.0/16",
+    "fake-ip-filter-mode": "blacklist",
+    "fake-ip-filter": [
+      "RULE-SET:Private,Fakeip_Filter,CN",
+      "dns.alidns.com",
+      "cloudflare-dns.com",
+      "dns.google",
+      "dns.adguard-dns.com",
+      "dns.nextdns.io",
+      "public.dns.iij.jp",
+      "dns0.eu",
+      "dns.18bit.cn",
+      "2025.dns1.top",
+      "dns.ipv4dns.com"
+    ],
+    "nameserver-policy": {
+      "+.jp": [
+        "https://public.dns.iij.jp/dns-query#h3=true"
+      ],
+      "+.hk": [
+        "quic://dns.nextdns.io"
+      ],
+      "+.eu": [
+        "quic://dns0.eu"
+      ],
+      "RULE-SET:Private,CN": [
+        "quic://dns.18bit.cn",
+        "quic://dns.ipv4dns.com",
+        "quic://2025.dns1.top",
+        "quic://dns.alidns.com"
+      ]
+    },
+    "nameserver": [
+      "quic://dns.adguard-dns.com",
+      "https://cloudflare-dns.com/dns-query#h3=true",
+      "https://dns.google/dns-query#h3=true"
+    ],
+    "proxy-server-nameserver": [
+      "quic://dns.alidns.com"
+    ],
+    "direct-nameserver": [
+      "quic://dns.alidns.com"
+    ],
+    "direct-nameserver-follow-policy": true
+  },
+  "rule-providers": {
+    "CN": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "domain",
+      "format": "mrs",
+      "proxy": "DIRECT",
+      "url": "https://cdn.jsdmirror.com/gh/Kwisma/clash-rules@release/direct.mrs",
+      "path": "./ruleset/China_Domain.mrs"
+    },
+    "Private": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "domain",
+      "format": "mrs",
+      "proxy": "🎯全球直连",
+      "url": "https://cdn.jsdmirror.com/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs",
+      "path": "./ruleset/Private_Domain.mrs"
+    },
+    "Fakeip_Filter": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "domain",
+      "format": "mrs",
+      "proxy": "DIRECT",
+      "url": "https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs",
+      "path": "./ruleset/Fakeip_Filter_Domain.mrs"
+    },
+    "Advertising-ads": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "domain",
+      "format": "mrs",
+      "proxy": "🎯全球直连",
+      "url": "https://cdn.jsdmirror.com/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs",
+      "path": "./ruleset/Advertising_ads_Domain.mrs"
+    },
+    "STUN": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "domain",
+      "format": "mrs",
+      "proxy": "🎯全球直连",
+      "url": "https://cdn.jsdmirror.com/gh/Kwisma/rules@main/rules/mihomo/STUN/STUN_Domain.mrs",
+      "path": "./ruleset/STUN_Domain.mrs"
+    },
+    "CNcidr": {
+      "type": "http",
+      "interval": 86400,
+      "behavior": "ipcidr",
+      "format": "mrs",
+      "proxy": "🎯全球直连",
+      "url": "https://cdn.jsdmirror.com/gh/Kwisma/clash-rules@release/cncidr.mrs",
+      "path": "./ruleset/CN_IP.mrs"
+    }
+  },
+  "proxies": [],
+  "proxy-groups": [
+    {
+      "name": "🚀全球代理",
+      "type": "select",
+      "proxies": [
+        "♻️自动选择",
+        "🟢手动选择",
+        "⚡️均衡负载",
+        "🔯故障转移",
+        "🎯全局直连",
+        "🇭🇰香港自动",
+        "🇹🇼台湾自动",
+        "🇯🇵日本自动",
+        "🇺🇸美国自动",
+        "🇸🇬新加坡自动",
+        "🇰🇷韩国自动"
+      ]
+    },
+    {
+      "name": "🟢手动选择",
+      "type": "select",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true
+    },
+    {
+      "name": "🎯全局直连",
+      "type": "select",
+      "hidden": true,
+      "proxies": [
+        "DIRECT"
+      ]
+    },
+    {
+      "name": "🚫拒绝连接",
+      "type": "select",
+      "hidden": true,
+      "proxies": [
+        "REJECT"
+      ]
+    },
+    {
+      "name": "🚫静默拒绝",
+      "type": "select",
+      "hidden": true,
+      "proxies": [
+        "REJECT-DROP"
+      ]
+    },
+    {
+      "name": "⚪绕过连接",
+      "type": "select",
+      "hidden": true,
+      "proxies": [
+        "PASS"
+      ]
+    },
+    {
+      "name": "🪧广告拦截",
+      "type": "select",
+      "proxies": [
+        "🚫静默拒绝",
+        "🚫拒绝连接",
+        "⚪绕过连接"
+      ]
+    },
+    {
+      "name": "💧泄漏拦截",
+      "type": "select",
+      "proxies": [
+        "🚫静默拒绝",
+        "🚫拒绝连接",
+        "⚪绕过连接"
+      ]
+    },
+    {
+      "name": "🎯全球直连",
+      "type": "select",
+      "proxies": [
+        "🎯全局直连",
+        "🚀全球代理",
+        "🟢手动选择",
+        "♻️自动选择"
+      ]
+    },
+    {
+      "name": "♻️自动选择",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true
+    },
+    {
+      "name": "⚡️均衡负载",
+      "type": "load-balance",
+      "tolerance": 1,
+      "strategy": "round-robin",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true
+    },
+    {
+      "name": "🔯故障转移",
+      "type": "fallback",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true
+    },
+    {
+      "name": "🇭🇰香港自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇭🇰|\\\\bHK\\\\b|香港|Hong Kong"
+    },
+    {
+      "name": "🇹🇼台湾自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇹🇼|\\bTW\\b|台湾|Taiwan|Tai wan"
+    },
+    {
+      "name": "🇯🇵日本自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇯🇵|\\bJP\\b|日本|Japan"
+    },
+    {
+      "name": "🇺🇸美国自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇺🇸|\\bUS\\b|美国|United States|CT"
+    },
+    {
+      "name": "🇸🇬新加坡自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇸🇬|\\bSG\\b|新加坡|Singapore"
+    },
+    {
+      "name": "🇰🇷韩国自动",
+      "type": "url-test",
+      "tolerance": 1,
+      "strategy": "consistent-hashing",
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": 300,
+      "lazy": true,
+      "timeout": 5000,
+      "max-failed-times": 5,
+      "include-all": true,
+      "hidden": true,
+      "filter": "(?i)🇰🇷|\\bKR\\b|韩国|South Korea"
+    },
+    {
+      "name": "GLOBAL",
+      "type": "select",
+      "include-all": true,
+      "proxies": [
+        "🚀全球代理",
+        "🟢手动选择",
+        "🪧广告拦截",
+        "💧泄漏拦截",
+        "🎯全球直连",
+        "♻️自动选择",
+        "⚡️均衡负载",
+        "🔯故障转移"
+      ],
+      "icon": "https://cdn.jsdmirror.com/gh/Kwisma/rules@main/icon/webp/100/GLOBAL.webp"
+    }
+  ],
+  "rules": [
+    "SUB-RULE,(OR,((NETWORK,UDP),(NETWORK,TCP))),SUB-REJECT",
+    "RULE-SET,Private,🎯全球直连",
+    "RULE-SET,CNcidr,🎯全球直连",
+    "MATCH,🚀全球代理"
+  ],
+  "sub-rules": {
+    "SUB-REJECT": [
+      "RULE-SET,Advertising-ads,🪧广告拦截",
+      "RULE-SET,STUN,💧泄漏拦截",
+      "DST-PORT,3478,💧泄漏拦截",
+      "DOMAIN,cdn.jsdmirror.com,🎯全球直连",
+      "AND,(NETWORK,TCP),(DST-PORT,5349),💧泄漏拦截",
+      "AND,(NETWORK,UDP),(DST-PORT,5350),💧泄漏拦截",
+      "AND,(NETWORK,UDP),(DST-PORT,5351),💧泄漏拦截",
+      "AND,(NETWORK,UDP),(DST-PORT,19302),💧泄漏拦截",
+      "DOMAIN-KEYWORD,stun,💧泄漏拦截"
+    ]
+  }
+}
